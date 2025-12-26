@@ -16,9 +16,12 @@ class Task {
         }
     }
     addLabel(label) {
-        if (label && !this.labels.includes(label)) {
+        // Проверяем, что метка не пустая, её ещё нет в списке И количество меток меньше 5
+        if (label && !this.labels.includes(label) && this.labels.length < 5) {
             this.labels.push(label);
+            return true; // Успешное добавление
         }
+        return false; // Добавление не удалось (либо метка пустая, либо уже есть, либо лимит достигнут)
     }
 }
 
